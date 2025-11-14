@@ -1,6 +1,9 @@
+import { Suspense } from "react"
 import { ProductCard } from "@/components/product-card"
 import { Button } from "@/components/ui/button"
 import { getFeaturedProducts } from "@/lib/products"
+import { ProductGridSkeleton } from "@/components/product-card-skeleton"
+import { AsyncProductCard } from "@/components/async-product-card"
 import Link from "next/link"
 
 export default function HomePage() {
@@ -44,7 +47,9 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {featuredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <Suspense key={product.id} fallback={<ProductGridSkeleton count={1} />}>
+                <AsyncProductCard product={product} delayMs={500} />
+              </Suspense>
             ))}
           </div>
 

@@ -33,6 +33,7 @@ export function ProductCard({ product }: ProductCardProps) {
               alt={product.name}
               fill
               className="object-cover transition-transform group-hover:scale-105"
+              loading="lazy"
             />
           </Link>
 
