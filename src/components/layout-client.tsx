@@ -4,6 +4,7 @@ import { Navigation } from "@/components/navigation"
 import { CartSheet } from "@/components/cart-sheet"
 import { useState } from "react"
 import { Toaster } from "@/components/ui/sonner"
+import { Footer } from "@/components/footer"
 
 export function LayoutClient({ children }: { children: React.ReactNode }) {
   const [isCartOpen, setIsCartOpen] = useState(false)
@@ -13,6 +14,7 @@ export function LayoutClient({ children }: { children: React.ReactNode }) {
       <Navigation onCartClick={() => setIsCartOpen(true)} />
       <main className="min-h-screen">{children}</main>
       <CartSheet isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+      <Footer />
       <Toaster />
     </>
   )
