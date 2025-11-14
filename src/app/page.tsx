@@ -1,10 +1,11 @@
 import { Suspense } from "react"
-import { ProductCard } from "@/components/product-card"
 import { Button } from "@/components/ui/button"
 import { getFeaturedProducts } from "@/lib/products"
 import { ProductGridSkeleton } from "@/components/product-card-skeleton"
 import { AsyncProductCard } from "@/components/async-product-card"
 import Link from "next/link"
+import Image from "next/image"
+import { cacheLife } from "next/cache";
 
 export default function HomePage() {
   const featuredProducts = getFeaturedProducts()
@@ -66,16 +67,18 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Shop by Category</h2>
-            <p className="text-gray-600">Find exactly what you're looking for</p>
+            <p className="text-gray-600">Find exactly what you&apos;re looking for</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Link href="/categories/electronics" className="group">
               <div className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&h=400&fit=crop"
                   alt="Electronics"
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform"
+                  width={600}
+                  height={400}
                 />
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
                   <h3 className="text-white text-2xl font-bold">Electronics</h3>
@@ -85,10 +88,12 @@ export default function HomePage() {
 
             <Link href="/categories/clothing" className="group">
               <div className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop"
                   alt="Clothing"
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform"
+                  width={600}
+                  height={400}
                 />
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
                   <h3 className="text-white text-2xl font-bold">Clothing</h3>
@@ -98,10 +103,12 @@ export default function HomePage() {
 
             <Link href="/categories/home-garden" className="group">
               <div className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=600&h=400&fit=crop"
                   alt="Home & Garden"
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform"
+                  width={600}
+                  height={400}
                 />
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
                   <h3 className="text-white text-2xl font-bold">Home & Garden</h3>
