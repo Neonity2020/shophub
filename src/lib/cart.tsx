@@ -20,7 +20,10 @@ type CartAction =
 const CartContext = createContext<{
   state: CartState
   dispatch: React.Dispatch<CartAction>
-} | null>(null)
+}>({
+  state: { items: [], total: 0 },
+  dispatch: () => {}
+})
 
 function cartReducer(state: CartState, action: CartAction): CartState {
   switch (action.type) {
